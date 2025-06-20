@@ -1,0 +1,14 @@
+/* src/pages/Home.css */
+.home-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.3rem;
+    color: #23236c;
+    letter-spacing: -1px;
+  }
+  .home-desc {
+    font-size: 1.25rem;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  

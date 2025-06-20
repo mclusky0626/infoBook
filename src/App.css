@@ -1,0 +1,15 @@
+body {
+  background: #f7f9fc;
+  margin: 0;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  color: #23236c;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.main-container {
+  width: 100vw;        /* 뷰포트 전체 너비 */
+  min-height: 100vh;   /* 뷰포트 전체 높이 */
+  padding: 32px 8vw;   /* 좌우 약간의 여백만 유지 */
+  box-sizing: border-box;
+}
