@@ -61,7 +61,7 @@ const AdminPanel: React.FC = () => {
             <th style={{ padding: 10 }}>이메일</th>
             <th style={{ padding: 10 }}>어드민</th>
             <th style={{ padding: 10 }}>인물백과 열람</th>
-            <th style={{ padding: 10 }}>권한 ON/OFF</th>
+            <th style={{ padding: 10, textAlign: "center" }}>권한 ON/OFF</th>
           </tr>
         </thead>
         <tbody>
@@ -72,7 +72,7 @@ const AdminPanel: React.FC = () => {
               <td style={{ padding: 10, textAlign: "center" }}>
                 {u.canAccess ? <span style={{ color: "green" }}>ON</span> : <span style={{ color: "gray" }}>OFF</span>}
               </td>
-              <td style={{ padding: 10 }}>
+              <td style={{ padding: 10, textAlign: "center" }}>
                 {u.email === ADMIN_EMAIL ? (
                   <span style={{ color: "#aaa" }}>-</span>
                 ) : (
