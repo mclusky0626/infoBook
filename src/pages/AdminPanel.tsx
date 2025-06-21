@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
-import { collection, getDocs, updateDoc, doc, onSnapshot } from "firebase/firestore";
+import { collection, updateDoc, doc, onSnapshot } from "firebase/firestore";
 import { useAuthUser } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import ToggleSwitch from "../components/ToggleSwitch";
 
 const ADMIN_EMAIL = "joshuabae0626@gmail.com";
 
@@ -75,20 +76,11 @@ const AdminPanel: React.FC = () => {
                 {u.email === ADMIN_EMAIL ? (
                   <span style={{ color: "#aaa" }}>-</span>
                 ) : (
-                  <button
-                    style={{
-                      padding: "6px 16px",
-                      borderRadius: 7,
-                      border: "none",
-                      background: u.canAccess ? "#6161bb" : "#bbb",
-                      color: "#fff",
-                      cursor: "pointer",
-                      fontWeight: "bold"
-                    }}
-                    onClick={() => toggleAccess(u.id, u.canAccess)}
-                  >
-                    {u.canAccess ? "OFF" : "ON"}
-                  </button>
+                  <ToggleSwitch
+                    checked={u.canAccess}
+                    onChange={() => toggleAccess(u.id, u.canAccess)}
+                    disabled={false}
+                  />
                 )}
               </td>
             </tr>

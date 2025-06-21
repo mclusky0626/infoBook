@@ -16,6 +16,16 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <Link to="/" className={location.pathname === "/" ? "active" : ""}>홈</Link>
       <Link to="/encyclopedia" className={location.pathname === "/encyclopedia" ? "active" : ""}>인물백과사전</Link>
+      {/* 어드민에게만 보이는 권한관리 메뉴 */}
+      {user && user.email === ADMIN_EMAIL && (
+        <Link
+          to="/admin"
+          className={location.pathname === "/admin" ? "active" : ""}
+          style={{ marginLeft: "1rem" }}
+        >
+          권한관리
+        </Link>
+      )}
       <div className="spacer" />
       {user ? (
         <>
