@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar"
 import "./App.css";
 import AdminPanel from "./pages/AdminPanel";
 
+import PersonDetailPage from "./pages/PersonDetailPage";
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,8 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/admin" element={<AdminPanel />} />
+        
+        <Route path="/encyclopedia/:id" element={<PersonDetailPage />} />
       </Routes>
     </Router>
   );

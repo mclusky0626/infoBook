@@ -1,0 +1,166 @@
+
+/* 전체 배경 */
+.detail-bg {
+    width: 100vw;
+    min-height: 100vh;
+    background: #f8fafc;
+    display: flex;
+    align-items: flex-start;  /* PC에선 위쪽에서 시작 */
+    justify-content: center;
+    padding-top: 48px;
+  }
+  
+  /* 카드 영역 (이미 있는 코드에서 margin: auto; 대신) */
+  .person-detail-root {
+    width: 100%;
+    max-width: 620px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 32px #0001;
+    padding: 46px 38px 38px 38px;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+  }
+  
+  @media (max-width: 700px) {
+    .person-detail-root {
+      padding: 24px 7px 24px 7px;
+      border-radius: 10px;
+    }
+    .detail-bg {
+      padding-top: 18px;
+    }
+  }
+  
+
+.person-detail-root {
+    max-width: 720px;
+    margin: 64px auto 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 32px #0001;
+    padding: 48px 34px 40px 34px;
+  }
+  
+  @media (max-width: 820px) {
+    .person-detail-root {
+      margin: 40px 6px 24px 6px;
+      padding: 34px 10px 32px 10px;
+    }
+  }
+  
+  .person-detail-main {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+    align-items: flex-start;
+  }
+  
+  @media (max-width: 600px) {
+    .person-detail-main {
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+    }
+  }
+  
+  .person-detail-avatar {
+    background: #f1f5f9;
+    border-radius: 50%;
+    width: 104px;
+    height: 104px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 7px #0001;
+  }
+  
+  .person-detail-avatar img {
+    width: 84px;
+    height: 84px;
+  }
+  
+  .person-detail-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  
+  .person-detail-name {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    color: #23236c;
+  }
+  
+  .person-detail-contact {
+    color: #64748b;
+    font-size: 1.08rem;
+    margin-bottom: 5px;
+  }
+  
+  .person-detail-desc {
+    color: #444;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  
+  .person-detail-tags {
+    margin-bottom: 8px;
+  }
+  
+  .person-detail-tag {
+    background: #f1f5f9;
+    color: #1e293b;
+    border-radius: 11px;
+    padding: 6px 15px;
+    margin-right: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    display: inline-block;
+  }
+  
+  .person-detail-section {
+    margin-top: 36px;
+    font-size: 1.11rem;
+    color: #23236c;
+    line-height: 1.8;
+    background: #f8fafc;
+    padding: 22px 22px 18px 22px;
+    border-radius: 13px;
+    white-space: pre-line;
+  }
+  
+  .person-detail-section b {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 1.17rem;
+    color: #3730a3;
+  }
+  
+  .person-detail-back {
+    margin-top: 30px;
+    text-align: right;
+  }
+  
+  .person-detail-back button {
+    background: #f1f5f9;
+    color: #23236c;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 30px;
+    font-weight: 700;
+    font-size: 1.02rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .person-detail-back button:hover {
+    background: #e0e7ef;
+  }
+  

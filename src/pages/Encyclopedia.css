@@ -1,0 +1,401 @@
+.encyclopedia-page,
+.encyclopedia-page * {
+  box-sizing: border-box;
+}
+
+.encyclopedia-page {
+  background: #f8fafc;
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 60px 0 0 0;
+}
+
+.encyclopedia-page > .header,
+.encyclopedia-page > .content,
+.encyclopedia-page > .pagination {
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 헤더 */
+.encyclopedia-page .header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+/* 페이지 제목 */
+.encyclopedia-page .div {
+  color: #1e293b;
+  text-align: left;
+  font-family: "NotoSansKr-Bold", sans-serif;
+  font-size: 32px;
+  line-height: 38.4px;
+  font-weight: 700;
+  align-self: stretch;
+}
+
+/* 검색 영역 */
+.encyclopedia-page .search-section {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  align-self: stretch;
+}
+
+.encyclopedia-page .search-bar {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+  flex: 1;
+  height: 48px;
+  position: relative;
+}
+
+.encyclopedia-page .search {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: visible;
+}
+
+.encyclopedia-page .search-bar input {
+  color: #1e293b;
+  background: transparent;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+/* 새문서 작성 버튼 */
+.encyclopedia-page .new-document-button {
+  background: #3b82f6;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 48px;
+  cursor: pointer;
+}
+
+.encyclopedia-page .plus {
+  width: 20px;
+  height: 20px;
+}
+
+.encyclopedia-page .div3 {
+  color: #ffffff;
+  font-family: "NotoSansKr-Black", sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.encyclopedia-page .content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+/* 초성 네비게이션 */
+.encyclopedia-page .alphabet-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.encyclopedia-page .div4 {
+  color: #334155;
+  font-family: "NotoSansKr-Black", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  align-self: stretch;
+}
+
+.encyclopedia-page .korean-alphabet {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  align-self: stretch;
+}
+
+.encyclopedia-page .div5 {
+  background: #f1f5f9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.encyclopedia-page .div6 {
+  color: #475569;
+  font-family: "NotoSansKr-Black", sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.encyclopedia-page .div7 {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.encyclopedia-page .div8 {
+  color: #64748b;
+  font-family: "NotoSansKr-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ----------- 인물 목록: 2열 카드 그리드 ----------- */
+.person-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px 32px;
+  align-items: stretch;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .person-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.person-card-1 {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+  min-width: 0;
+  max-width: 420px;
+  width: 100%;
+  height: 120px;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px #00000006;
+  transition: box-shadow 0.15s;
+}
+.person-card-1:hover {
+  box-shadow: 0 4px 16px #00000014;
+}
+
+.avatar {
+  background: #f1f5f9;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+}
+
+.user {
+  width: 32px;
+  height: 32px;
+}
+
+.person-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+  max-width: 200px;
+  word-break: keep-all;
+}
+
+.encyclopedia-page .div9 {
+  color: #1e293b;
+  font-family: "NotoSansKr-Black", sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  align-self: stretch;
+}
+
+.encyclopedia-page .div10 {
+  color: #64748b;
+  font-family: "NotoSansKr-Regular", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  align-self: stretch;
+}
+
+.encyclopedia-page .tags {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  align-self: stretch;
+}
+
+.encyclopedia-page .tag-1 {
+  background: #eff6ff;
+  border-radius: 12px;
+  padding: 0px 8px;
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.encyclopedia-page .div11 {
+  color: #1d4ed8;
+  font-family: "NotoSansKr-Medium", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* 인물 개수 표시 */
+.encyclopedia-page ._24 {
+  color: #64748b;
+  font-family: "NotoSansKr-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  align-self: stretch;
+}
+
+/* ----------- 페이징 ----------- */
+.encyclopedia-page .pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  align-self: stretch;
+}
+
+.encyclopedia-page .page-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
+.encyclopedia-page ._156 {
+  color: #64748b;
+  font-family: "NotoSansKr-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.encyclopedia-page .pagination-controls {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.encyclopedia-page .previous,
+.encyclopedia-page .next {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 36px;
+  cursor: pointer;
+}
+.encyclopedia-page .previous[style*="opacity: 0.5"],
+.encyclopedia-page .next[style*="opacity: 0.5"] {
+  cursor: default !important;
+}
+
+.encyclopedia-page .chevron-left,
+.encyclopedia-page .chevron-right6 {
+  width: 16px;
+  height: 16px;
+}
+
+.encyclopedia-page .div18 {
+  color: #64748b;
+  font-family: "NotoSansKr-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.encyclopedia-page .page-1 {
+  background: #3b82f6;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.encyclopedia-page ._1 {
+  color: #ffffff;
+  font-family: "NotoSansKr-Black", sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.encyclopedia-page .page-2,
+.encyclopedia-page .page-3,
+.encyclopedia-page .page-8 {
+  background: #ffffff;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+}
+
+.encyclopedia-page ._2,
+.encyclopedia-page ._3,
+.encyclopedia-page ._8 {
+  color: #64748b;
+  font-family: "NotoSansKr-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.encyclopedia-page .div19 {
+  color: #94a3b8;
+  font-family: "NotoSansKr-Medium", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 모달(새 문서 작성 등) 스타일은 따로 필요시 추가하세요 */
