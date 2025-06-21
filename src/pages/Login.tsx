@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-import { auth,db } from "../firebase";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  type User,
+} from "firebase/auth";
+import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { setDoc, doc, getDoc } from "firebase/firestore";
@@ -8,7 +12,7 @@ import { setDoc, doc, getDoc } from "firebase/firestore";
 
 
 const ADMIN_EMAIL = "joshuabae0626@gmail.com";
-const ensureUserDoc = async (user: any) => {
+const ensureUserDoc = async (user: User) => {
     const ref = doc(db, "users", user.uid);
     const snap = await getDoc(ref);
     if (!snap.exists()) {
@@ -39,8 +43,9 @@ const Login: React.FC = () => {
         await ensureUserDoc(cred.user);      // << 여기!
       }
       navigate("/");
-    } catch (error: any) {
-      setErr(error.message || "오류가 발생했습니다.");
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "오류가 발생했습니다.";
+      setErr(message);
     }
   };
   
