@@ -28,8 +28,8 @@ const PersonEditPage: React.FC = () => {
     if (user === undefined || info === undefined) return;
     if (user === null) {
       navigate("/login");
-    } else if (!info?.isAdmin) {
-      alert("관리자만 수정 가능합니다.");
+    } else if (!info?.canAccess) {
+      alert("수정 권한이 없습니다.");
       navigate(id ? `/encyclopedia/${id}` : "/encyclopedia");
     }
   }, [user, info, navigate, id]);
@@ -45,7 +45,7 @@ const PersonEditPage: React.FC = () => {
   if (user === undefined || info === undefined || person === null) {
     return <div className="main-container">불러오는 중...</div>;
   }
-  if (user === null || !info.isAdmin) return null;
+  if (user === null || !info.canAccess) return null;
 
   const toggleTag = (tag: string) => {
     setPerson(cur =>

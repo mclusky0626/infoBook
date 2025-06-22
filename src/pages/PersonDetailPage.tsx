@@ -70,7 +70,7 @@ const PersonDetailPage: React.FC = () => {
           </div>
         }
         <div className="person-detail-back">
-          {info.isAdmin && (
+          {info.canAccess && (
             <button
               onClick={() => navigate(`/encyclopedia/${id}/edit`)}
               style={{ marginRight: 8 }}
