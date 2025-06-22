@@ -34,7 +34,7 @@ const PersonDetailPage: React.FC = () => {
   useEffect(() => {
     if (!id) return;
     getDoc(doc(db, "people", id)).then(snap => {
-      if (snap.exists()) setPerson(snap.data());
+      if (snap.exists()) setPerson(snap.data() as Person);
       else navigate("/encyclopedia");
     });
   }, [id, navigate]);
