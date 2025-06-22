@@ -21,8 +21,10 @@ const AdminPanel: React.FC = () => {
 
   // 권한 체크
   useEffect(() => {
-    if (!user) return;
-    if (user.email !== ADMIN_EMAIL) {
+    if (user === undefined) return;
+    if (!user) {
+      navigate("/login");
+    } else if (user.email !== ADMIN_EMAIL) {
       alert("관리자만 접근 가능합니다.");
       navigate("/");
     }

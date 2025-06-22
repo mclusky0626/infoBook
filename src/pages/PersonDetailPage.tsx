@@ -19,11 +19,13 @@ const PersonDetailPage: React.FC = () => {
   const { id } = useParams<{id:string}>();
   const navigate = useNavigate();
   const user = useAuthUser();
-  const info = useUserInfo(user?.uid);
+  const uidForInfo = user === null ? null : user?.uid;
+  const info = useUserInfo(uidForInfo);
   const [person, setPerson] = useState<Person | null>(null);
 
   useEffect(() => {
-    if (user === null) {
+    if (user === undefined || info === undefined) return;
+    if (!user) {
       navigate("/login");
     } else if (info && !info.canAccess) {
       alert("열람 권한이 없습니다.");
@@ -39,8 +41,8 @@ const PersonDetailPage: React.FC = () => {
     });
   }, [id, navigate]);
 
-  if (!user || !info || !person) return <div>불러오는 중...</div>;
-  if (!info.canAccess) return null;
+  if (user === undefined || info === undefined || !person) return <div>불러오는 중...</div>;
+  if (!user || !info.canAccess) return null;
 
   return (
     <div className="detail-bg">

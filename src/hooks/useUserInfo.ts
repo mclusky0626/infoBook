@@ -9,9 +9,13 @@ export interface UserInfo {
 }
 
 export function useUserInfo(uid?: string | null) {
-  const [info, setInfo] = useState<UserInfo | null>(null);
+  const [info, setInfo] = useState<UserInfo | null | undefined>(undefined);
 
   useEffect(() => {
+    if (uid === undefined) {
+      setInfo(undefined);
+      return;
+    }
     if (!uid) {
       setInfo(null);
       return;

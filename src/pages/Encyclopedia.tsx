@@ -46,10 +46,12 @@ const EncyclopediaPage: React.FC = () => {
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
   const user = useAuthUser();
-  const info = useUserInfo(user?.uid);
+  const uidForInfo = user === null ? null : user?.uid;
+  const info = useUserInfo(uidForInfo);
 
   useEffect(() => {
-    if (user === null) {
+    if (user === undefined || info === undefined) return;
+    if (!user) {
       navigate("/login");
     } else if (info && !info.canAccess) {
       alert("열람 권한이 없습니다.");
@@ -74,10 +76,10 @@ const EncyclopediaPage: React.FC = () => {
     return () => unsub();
   }, []);
 
-  if (!user || !info) {
+  if (user === undefined || info === undefined) {
     return <div className="main-container">불러오는 중...</div>;
   }
-  if (!info.canAccess) {
+  if (!user || !info.canAccess) {
     return null;
   }
 
