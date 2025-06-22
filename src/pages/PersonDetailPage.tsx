@@ -70,6 +70,14 @@ const PersonDetailPage: React.FC = () => {
           </div>
         }
         <div className="person-detail-back">
+          {info.isAdmin && (
+            <button
+              onClick={() => navigate(`/encyclopedia/${id}/edit`)}
+              style={{ marginRight: 8 }}
+            >
+              수정
+            </button>
+          )}
           <button onClick={() => navigate(-1)}>목록으로</button>
         </div>
       </div>
