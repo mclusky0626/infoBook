@@ -3,11 +3,13 @@ import "./Encyclopedia.css";
 import { collection, addDoc, query, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
+import { useAuthUser } from "../hooks/useAuth";
+import { useUserInfo } from "../hooks/useUserInfo";
 import search from "../assets/search.svg";
 import plus from "../assets/Plus.svg";
 import left from "../assets/Chevron Left.svg";
 import right from "../assets/Chevron Right.svg";
-import user from "../assets/User.svg";
+import userIcon from "../assets/User.svg";
 
 const INITIAL_TAGS = ["친구", "같은반", "가족", "형", "누나", "지인"];
 const INITIAL_CHO = ["ㄱ", "ㄴ", "ㄷ", "ㄹ", "ㅁ", "ㅂ", "ㅅ", "ㅇ", "ㅈ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"];
@@ -27,7 +29,7 @@ type Person = {
   tags: string[];
   description: string;
   detail?: string;
-  createdAt: any;
+  createdAt: unknown;
 };
 
 const TAG_COLORS: Record<string, string> = {
@@ -43,6 +45,18 @@ const EncyclopediaPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const navigate = useNavigate();
+  const user = useAuthUser();
+  const info = useUserInfo(user?.uid);
+
+  useEffect(() => {
+    if (user === undefined || info === undefined) return;
+    if (user === null) {
+      navigate("/login");
+    } else if (info && !info.canAccess) {
+      alert("열람 권한이 없습니다.");
+      navigate("/");
+    }
+  }, [user, info, navigate]);
 
   // Firestore에서 실시간으로 people 가져오기
   useEffect(() => {
@@ -51,7 +65,7 @@ const EncyclopediaPage: React.FC = () => {
       orderBy("name", "asc")
     );
     const unsub = onSnapshot(q, snap => {
-      let arr: Person[] = [];
+      const arr: Person[] = [];
       snap.forEach(docu => {
         const data = docu.data();
         arr.push({ id: docu.id, ...data } as Person);
@@ -60,6 +74,13 @@ const EncyclopediaPage: React.FC = () => {
     });
     return () => unsub();
   }, []);
+
+  if (user === undefined || info === undefined) {
+    return <div className="main-container">불러오는 중...</div>;
+  }
+  if (user === null || !info?.canAccess) {
+    return null;
+  }
 
   // 초성별 필터 & 검색
   const filtered = people.filter(p => {
@@ -149,7 +170,7 @@ const EncyclopediaPage: React.FC = () => {
                 style={{ cursor: "pointer" }}
               >
                 <div className="avatar">
-                  <img className="user" src={user} alt="user"/>
+                  <img className="user" src={userIcon} alt="user"/>
                 </div>
                 <div className="person-info">
                   <div className="div9">{p.name}</div>
