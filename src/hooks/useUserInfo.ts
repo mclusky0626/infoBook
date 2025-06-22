@@ -19,15 +19,10 @@ export function useUserInfo(uid?: string | null) {
     const ref = doc(db, "users", uid);
     const unsub = onSnapshot(ref, snap => {
       if (snap.exists()) {
-        const data = snap.data() as {
-          email?: string;
-          canAccess?: boolean;
-          canaccess?: boolean;
-          isAdmin?: boolean;
-        };
+        const data = snap.data() as UserInfo;
         setInfo({
           email: data.email ?? "",
-          canAccess: data.canAccess ?? data.canaccess ?? false,
+          canAccess: data.canAccess ?? false,
           isAdmin: data.isAdmin ?? false,
         });
       } else {

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
-import userIcon from "../assets/User.svg"
-import "./PersonDetailPage.css"
+import userIcon from "../assets/User.svg";
+import "./PersonDetailPage.css";
 import { useAuthUser } from "../hooks/useAuth";
 import { useUserInfo } from "../hooks/useUserInfo";
 
@@ -70,7 +70,6 @@ const PersonDetailPage: React.FC = () => {
           </div>
         }
         <div className="person-detail-back">
-          {/* === 이 부분만 수정됨 === */}
           {info.canAccess && (
             <button
               onClick={() => navigate(`/encyclopedia/${id}/edit`)}
