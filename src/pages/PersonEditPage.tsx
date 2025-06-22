@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useAuthUser } from "../hooks/useAuth";
-import { useUserInfo } from "../hooks/useUserInfo";
 import "./PersonEditPage.css";
 
 const INITIAL_TAGS = ["친구", "같은반", "가족", "형", "누나", "지인"];
@@ -20,19 +19,15 @@ const PersonEditPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const user = useAuthUser();
-  const info = useUserInfo(user?.uid);
   const [person, setPerson] = useState<Person | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (user === undefined || info === undefined) return;
+    if (user === undefined) return;
     if (user === null) {
       navigate("/login");
-    } else if (!info?.canAccess) {
-      alert("수정 권한이 없습니다.");
-      navigate(id ? `/encyclopedia/${id}` : "/encyclopedia");
     }
-  }, [user, info, navigate, id]);
+  }, [user, navigate]);
 
   useEffect(() => {
     if (!id) return;
@@ -42,10 +37,10 @@ const PersonEditPage: React.FC = () => {
     });
   }, [id, navigate]);
 
-  if (user === undefined || info === undefined || person === null) {
+  if (user === undefined || person === null) {
     return <div className="main-container">불러오는 중...</div>;
   }
-  if (user === null || !info || !info.canAccess) return null;
+  if (user === null) return null;
 
   const toggleTag = (tag: string) => {
     setPerson(cur =>
