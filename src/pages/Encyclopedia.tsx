@@ -92,7 +92,7 @@ const EncyclopediaPage: React.FC = () => {
   });
 
   // 페이징 (10개씩)
-  const PER_PAGE = 10;
+  const PER_PAGE = 12;
   const pageCount = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
   const paged = filtered.slice((page-1)*PER_PAGE, page*PER_PAGE);
 
