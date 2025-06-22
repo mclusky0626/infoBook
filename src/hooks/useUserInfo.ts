@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 
+// Streams permission information for the authenticated user.
+
 export interface UserInfo {
   email: string;
   canAccess: boolean;
