@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../firebase";
 
-// Streams permission information for the authenticated user.
-
 export interface UserInfo {
   email: string;
   canAccess: boolean;
@@ -20,7 +18,16 @@ export function useUserInfo(uid?: string | null) {
     }
     const ref = doc(db, "users", uid);
     const unsub = onSnapshot(ref, snap => {
-      setInfo(snap.exists() ? (snap.data() as UserInfo) : null);
+      if (snap.exists()) {
+        const data = snap.data() as UserInfo;
+        setInfo({
+          email: data.email ?? "",
+          canAccess: data.canAccess ?? false,
+          isAdmin: data.isAdmin ?? false,
+        });
+      } else {
+        setInfo(null);
+      }
     });
     return () => unsub();
   }, [uid]);

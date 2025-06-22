@@ -8,6 +8,7 @@ import "./App.css";
 import AdminPanel from "./pages/AdminPanel";
 
 import PersonDetailPage from "./pages/PersonDetailPage";
+import PersonEditPage from "./pages/PersonEditPage";
 
 const App: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Route path="/admin" element={<AdminPanel />} />
         
         <Route path="/encyclopedia/:id" element={<PersonDetailPage />} />
+        <Route path="/encyclopedia/:id/edit" element={<PersonEditPage />} />
       </Routes>
     </Router>
   );
