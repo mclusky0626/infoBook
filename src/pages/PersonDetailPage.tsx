@@ -16,7 +16,7 @@ type Person = {
 };
 
 const PersonDetailPage: React.FC = () => {
-  const { id } = useParams<{id:string}>();
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const user = useAuthUser();
   const info = useUserInfo(user?.uid);
@@ -57,7 +57,7 @@ const PersonDetailPage: React.FC = () => {
             <div className="person-detail-contact">연락처: {person.contact || "-"}</div>
             <div className="person-detail-desc">{person.description}</div>
             <div className="person-detail-tags">
-              {person.tags && person.tags.map((tag:string, i:number) => (
+              {person.tags && person.tags.map((tag: string, i: number) => (
                 <span className="person-detail-tag" key={i}>{tag}</span>
               ))}
             </div>
@@ -70,7 +70,8 @@ const PersonDetailPage: React.FC = () => {
           </div>
         }
         <div className="person-detail-back">
-          {info.isAdmin && (
+          {/* === 이 부분만 수정됨 === */}
+          {info.canAccess && (
             <button
               onClick={() => navigate(`/encyclopedia/${id}/edit`)}
               style={{ marginRight: 8 }}

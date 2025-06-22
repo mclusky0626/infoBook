@@ -28,8 +28,8 @@ const PersonEditPage: React.FC = () => {
     if (user === undefined || info === undefined) return;
     if (user === null) {
       navigate("/login");
-    } else if (!info?.isAdmin) {
-      alert("관리자만 수정 가능합니다.");
+    } else if (!info?.canAccess) {
+      alert("수정 권한이 없습니다.");
       navigate(id ? `/encyclopedia/${id}` : "/encyclopedia");
     }
   }, [user, info, navigate, id]);
@@ -45,7 +45,7 @@ const PersonEditPage: React.FC = () => {
   if (user === undefined || info === undefined || person === null) {
     return <div className="main-container">불러오는 중...</div>;
   }
-  if (user === null || !info.isAdmin) return null;
+  if (user === null || !info || !info.canAccess) return null;
 
   const toggleTag = (tag: string) => {
     setPerson(cur =>
@@ -60,13 +60,22 @@ const PersonEditPage: React.FC = () => {
     );
   };
 
+  // 로그 추가
   const save = async () => {
+    console.log("=== [수정 시도] ===");
+    console.log("person 값:", person);
     if (!person.name.trim()) {
       setError("이름은 필수입니다!");
       return;
     }
-    await updateDoc(doc(db, "people", id!), person);
-    navigate(`/encyclopedia/${id}`);
+    try {
+      await updateDoc(doc(db, "people", id!), person);
+      console.log("Firestore 업데이트 성공!");
+      navigate(`/encyclopedia/${id}`);
+    } catch (err) {
+      console.error("Firestore 업데이트 실패:", err);
+      setError("수정에 실패했습니다: " + (err as any)?.message);
+    }
   };
 
   return (
