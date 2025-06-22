@@ -9,7 +9,11 @@ export interface UserInfo {
 }
 
 export function useUserInfo(uid?: string | null) {
+
   const [info, setInfo] = useState<UserInfo | null | undefined>(undefined);
+
+  const [info, setInfo] = useState<UserInfo | null>(null);
+
 
   useEffect(() => {
     if (!uid) {

@@ -23,7 +23,9 @@ const PersonDetailPage: React.FC = () => {
   const [person, setPerson] = useState<Person | null>(null);
 
   useEffect(() => {
+
     if (user === undefined || info === undefined) return;
+
     if (user === null) {
       navigate("/login");
     } else if (info && !info.canAccess) {
@@ -35,15 +37,20 @@ const PersonDetailPage: React.FC = () => {
   useEffect(() => {
     if (!id) return;
     getDoc(doc(db, "people", id)).then(snap => {
-      if (snap.exists()) setPerson(snap.data());
+      if (snap.exists()) setPerson(snap.data() as Person);
       else navigate("/encyclopedia");
     });
   }, [id, navigate]);
+
 
   if (user === undefined || info === undefined || !person) {
     return <div>불러오는 중...</div>;
   }
   if (user === null || !info?.canAccess) return null;
+
+  if (!user || !info || !person) return <div>불러오는 중...</div>;
+  if (!info.canAccess) return null;
+
 
   return (
     <div className="detail-bg">
