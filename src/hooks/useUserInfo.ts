@@ -18,7 +18,21 @@ export function useUserInfo(uid?: string | null) {
     }
     const ref = doc(db, "users", uid);
     const unsub = onSnapshot(ref, snap => {
-      setInfo(snap.exists() ? (snap.data() as UserInfo) : null);
+      if (snap.exists()) {
+        const data = snap.data() as {
+          email?: string;
+          canAccess?: boolean;
+          canaccess?: boolean;
+          isAdmin?: boolean;
+        };
+        setInfo({
+          email: data.email ?? "",
+          canAccess: data.canAccess ?? data.canaccess ?? false,
+          isAdmin: data.isAdmin ?? false,
+        });
+      } else {
+        setInfo(null);
+      }
     });
     return () => unsub();
   }, [uid]);
