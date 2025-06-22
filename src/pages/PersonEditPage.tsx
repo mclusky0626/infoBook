@@ -74,7 +74,8 @@ const PersonEditPage: React.FC = () => {
       navigate(`/encyclopedia/${id}`);
     } catch (err) {
       console.error("Firestore 업데이트 실패:", err);
-      setError("수정에 실패했습니다: " + (err as any)?.message);
+      const msg = err instanceof Error ? err.message : String(err);
+      setError("수정에 실패했습니다: " + msg);
     }
   };
 
