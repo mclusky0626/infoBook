@@ -181,15 +181,20 @@
 /* ----------- 인물 목록: 2열 카드 그리드 ----------- */
 .person-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px 32px;
   align-items: stretch;
   width: 100%;
 }
 @media (max-width: 900px) {
   .person-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .person-cards {
+    grid-template-columns: 1fr;
   }
 }
 
