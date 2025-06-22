@@ -49,6 +49,10 @@ const EncyclopediaPage: React.FC = () => {
   const info = useUserInfo(user?.uid);
 
   useEffect(() => {
+
+    if (user === undefined || info === undefined) return;
+
+
     if (user === null) {
       navigate("/login");
     } else if (info && !info.canAccess) {
@@ -74,10 +78,17 @@ const EncyclopediaPage: React.FC = () => {
     return () => unsub();
   }, []);
 
+
+  if (user === undefined || info === undefined) {
+    return <div className="main-container">불러오는 중...</div>;
+  }
+  if (user === null || !info?.canAccess) {
+
   if (!user || !info) {
     return <div className="main-container">불러오는 중...</div>;
   }
   if (!info.canAccess) {
+
     return null;
   }
 
