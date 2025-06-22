@@ -121,6 +121,7 @@ const EncyclopediaPage: React.FC = () => {
     }));
   };
 
+
   return (
     <div className="encyclopedia-page">
       <div className="header">
