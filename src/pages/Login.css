@@ -1,7 +1,7 @@
 .login-container {
     width: 100%;
     max-width: 420px;
-    margin: 70px auto;
+    margin: 0 auto;
     padding: 44px 38px 34px 38px;
     background: #fff;
     border-radius: 22px;
@@ -34,9 +34,13 @@
     border-radius: 9px;
     font-size: 1.13rem;
     background: #f7f9fc;
+    color: #23236c;
     outline: none;
     transition: border 0.2s;
     margin-bottom: 4px;
+  }
+  .login-container input::placeholder {
+    color: #94a3b8;
   }
   .login-container input[type="email"]:focus,
   .login-container input[type="password"]:focus {
@@ -78,7 +82,7 @@
     cursor: pointer;
     text-decoration: underline;
   }
-  /* 화면 전체를 flex로 세로+가로 중앙정렬 */
+/* 화면 전체를 flex로 세로+가로 중앙정렬 */
 .main-container.login-bg {
     width: 100vw;
     height: 100vh;
@@ -90,16 +94,5 @@
     box-sizing: border-box;
   }
   
-  .login-container {
-    /* 기존 카드 스타일 유지, max-width, 패딩 등 */
-    max-width: 420px;
-    width: 100%;
-    padding: 44px 38px 34px 38px;
-    background: #fff;
-    border-radius: 22px;
-    box-shadow: 0 8px 32px #23236c19;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+
   
