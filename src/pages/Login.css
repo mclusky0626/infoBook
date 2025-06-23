@@ -1,7 +1,7 @@
 .login-container {
     width: 100%;
     max-width: 420px;
-    margin: 70px auto;
+    margin: 0 auto;
     padding: 44px 38px 34px 38px;
     background: #fff;
     border-radius: 22px;
@@ -9,42 +9,48 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .login-container h2 {
+}
+
+.login-container h2 {
     margin-bottom: 28px;
     color: #23236c;
     font-weight: 700;
     font-size: 2.1rem;
     letter-spacing: -1.5px;
-  }
-  
-  .login-container form {
+}
+
+.login-container form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 19px;
-  }
-  
-  .login-container input[type="email"],
-  .login-container input[type="password"] {
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
     width: 100%;
     padding: 15px 15px;
     border: 1.5px solid #d1d3e0;
     border-radius: 9px;
     font-size: 1.13rem;
     background: #f7f9fc;
+    color: #23236c;
     outline: none;
     transition: border 0.2s;
     margin-bottom: 4px;
-  }
-  .login-container input[type="email"]:focus,
-  .login-container input[type="password"]:focus {
+}
+
+.login-container input::placeholder {
+    color: #94a3b8;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
     border: 2px solid #6161bb;
     background: #fff;
-  }
-  
-  .login-container button[type="submit"] {
+}
+
+.login-container button[type="submit"] {
     width: 100%;
     background: #23236c;
     color: #fff;
@@ -56,29 +62,30 @@
     cursor: pointer;
     margin-top: 7px;
     transition: background 0.15s;
-  }
-  .login-container button[type="submit"]:hover {
+}
+.login-container button[type="submit"]:hover {
     background: #6161bb;
-  }
-  
-  .login-container .error {
+}
+
+.login-container .error {
     color: #f44336;
     font-size: 1rem;
     text-align: left;
     margin: -3px 0 6px 4px;
-  }
-  
-  .login-container .switch {
+}
+
+.login-container .switch {
     margin-top: 22px;
     font-size: 1.06rem;
-  }
-  .login-container .switch span {
+}
+.login-container .switch span {
     color: #23236c;
     font-weight: bold;
     cursor: pointer;
     text-decoration: underline;
-  }
-  /* 화면 전체를 flex로 세로+가로 중앙정렬 */
+}
+
+/* 화면 전체를 flex로 세로+가로 중앙정렬 */
 .main-container.login-bg {
     width: 100vw;
     height: 100vh;
@@ -88,18 +95,4 @@
     align-items: center;
     background: #f7f9fc;
     box-sizing: border-box;
-  }
-  
-  .login-container {
-    /* 기존 카드 스타일 유지, max-width, 패딩 등 */
-    max-width: 420px;
-    width: 100%;
-    padding: 44px 38px 34px 38px;
-    background: #fff;
-    border-radius: 22px;
-    box-shadow: 0 8px 32px #23236c19;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+}
